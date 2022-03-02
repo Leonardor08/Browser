@@ -1,0 +1,64 @@
+create database Travel
+go
+
+use Travel
+go
+
+
+-- Tablas Mayores
+
+Create table autores(
+	id int primary key not null,
+	nombre varchar (45) not null,
+	apellidos varchar (45) not null,
+);
+go
+
+select * from autores;
+
+create table libros(
+	isbn int primary key not null,
+	titulo varchar (45) not null,
+	sinopsis Text not null,
+	n_paginas varchar(45) not null
+);
+go
+
+select * from libros;
+
+create table editoriales(
+	id_Editoriales int primary key not null,
+	nombre varchar (45) not null,
+	sede varchar (45) not null
+);
+go
+
+select * from editoriales;
+
+-- Debiles
+
+create table autores_has_libros(
+	id_aHl int identity (1,1) primary key
+);
+go
+
+select * from autores_has_libros;
+
+-- Relaciones Tabla Debil
+
+Alter table autores_has_libros add id int foreign key references autores (id);
+Alter table autores_has_libros add isbn int foreign key references libros (isbn);
+go
+-- Relaciones Tablas Mayores
+
+Alter table Libros add id_Editoriales int foreign key references editoriales (id_Editoriales);
+go
+
+Create view Details as 
+Select a.nombre, a.apellidos, titulo, CAST(sinopsis as varchar(max)) as Sinopsis, n_paginas, ahl.isbn, e.nombre as Editorial from autores a
+inner join autores_has_libros ahl on a.id = ahl.id 
+inner join libros l on ahl.isbn = l.isbn 
+inner join editoriales e on l.id_editoriales = e.id_Editoriales group by a.apellidos, a.nombre, titulo, CAST(sinopsis as varchar(max)), n_paginas, ahl.isbn, e.nombre;
+go
+
+Select * from Details;

@@ -1,0 +1,20 @@
+Esta solución fue creada en Visual Studio 2019
+
+Para el uso de la base de datos este .rar contiene un 2 archivos para importar la base
+
+1) Script .txt con la información el cual se ejecutara en una query nueva del SSMS (Sql Server Management Studio)
+
+2) Archivo para importar la información en el SSMS al seleccionar la pestaña Herramientas (Tools) y seleccionar la opción
+de Importar o Exportar una vez ahí seleccionar la opción de Importar y una vez guardado los settings actuales 
+indicar donde se encuentra el archivo nuevo para proceder con la ejecución de esta. 
+
+Una vez instalada la base de datos refrescar el Explorador de Objetos, dar click derecho a la base de datos y seleccionar
+la opción de propiedades, copiar la información del Server para poder usarla en el archivo appsettings.jason y reemplazar
+con la información que este lleva. 
+
+Pueden ingresar la información en las respectivas tablas seleccionandolas con click derecho, dando a la opción edit e ingresando los valores
+
+Esto es paso es de suma importancia ya que la instancia de base de datos cambia dependiendo a cada usuario como decide configurar
+su enntorno de trabajo. 
+
+Ya con esto hecho la solución del aplicativo esta lista para funcionar. 
